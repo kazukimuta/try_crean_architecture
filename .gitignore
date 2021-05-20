@@ -119,3 +119,5 @@ build
 .env
 
 .DS_Store
+
+go.mod

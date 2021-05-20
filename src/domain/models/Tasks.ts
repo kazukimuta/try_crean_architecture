@@ -61,5 +61,7 @@ export class Task {
   constructor(title: string = null, description: string = null) {
     this._title = title;
     this._description = description;
+    this._updatedAt = moment();
+    this._createdAt = moment();
   }
 }
