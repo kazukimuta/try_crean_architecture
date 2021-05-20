@@ -8,7 +8,6 @@ import { DeleteTask } from "../../application/usecases/DeleteTask";
 
 export class TasksController {
   private taskSerializer: TaskSerializer;
-  private taskRepository: ITaskRepository;
   private _getTask: GetTask;
   private _listTask: ListTasks;
   private _createTask: CreateTask;
@@ -17,7 +16,6 @@ export class TasksController {
 
   constructor(taskRepository: ITaskRepository) {
     this.taskSerializer = new TaskSerializer();
-    this.taskRepository = taskRepository;
     this._createTask = new CreateTask(taskRepository);
     this._getTask = new GetTask(taskRepository);
     this._listTask = new ListTasks(taskRepository);
