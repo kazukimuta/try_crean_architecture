@@ -1,6 +1,6 @@
 import { Task } from "../../../src/domain/models/Tasks";
 import { ITaskRepository } from "../../../src/application/repositories/ITaskRepository";
-import moment from "moment";
+import moment from "moment-timezone";
 
 export class TaskRepositoryMock extends ITaskRepository {
   public find = jest.fn(async (id: string) => this._dummyTask);
@@ -21,3 +21,5 @@ export class TaskRepositoryMock extends ITaskRepository {
     return this._dummyTask;
   }
 }
+
+const a = new TaskRepositoryMock();
