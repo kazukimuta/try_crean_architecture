@@ -2,10 +2,16 @@ import { Task } from "../../domain/models/Tasks";
 import { ITaskRepository } from "../../application/repositories/ITaskRepository";
 import { INoSQLDBConnection } from "./INoSQLDBConnection";
 import moment from "moment-timezone";
+import { injectable, inject } from "inversify";
+import Symbols from "../../symbols";
+import "reflect-metadata";
 
+@injectable()
 export class NoSQLTaskRepository extends ITaskRepository {
   private connection: INoSQLDBConnection;
-  constructor(connection: INoSQLDBConnection) {
+  constructor(
+    @inject(Symbols.INoSQLDBConnection) connection: INoSQLDBConnection
+  ) {
     super();
     this.connection = connection;
   }

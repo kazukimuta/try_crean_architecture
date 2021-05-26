@@ -14,9 +14,11 @@
   "dependencies": {
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "inversify": "^5.1.1",
     "moment-timezone": "^0.5.33",
     "mongodb": "^3.6.6",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13"
   },
   "devDependencies": {
     "@jest-mock/express": "^1.4.1",

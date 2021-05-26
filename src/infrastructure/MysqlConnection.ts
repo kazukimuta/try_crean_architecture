@@ -2,7 +2,10 @@ import mysql from "mysql";
 import dotenv from "dotenv";
 import util from "util";
 import { IRDBConnection } from "../interfaces/database/IRDBConnection";
+import { injectable } from "inversify";
+import "reflect-metadata";
 
+@injectable()
 export class MysqlConnection extends IRDBConnection {
   private pool: any;
 
