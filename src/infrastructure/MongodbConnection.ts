@@ -14,9 +14,13 @@ export class MongodbConnection extends INoSQLDBConnection {
     this.MONGO_URL = process.env.MONGO_URL;
     this.MONGO_DB = process.env.MONGO_DB;
     this.MONGO_COLLECTION = process.env.MONGO_COLLECTION;
+    this.connect();
   }
-  idToString(id: any) {
-    return id.toHexString();
+  idToString(id: any = "") {
+    if (id.toHexString && typeof id.toHexString == "function") {
+      return id.toHexString();
+    }
+    return id;
   }
   async connect() {
     const client = await MongoClient.connect(this.MONGO_URL, {
