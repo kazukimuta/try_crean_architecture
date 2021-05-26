@@ -1,4 +1,4 @@
-import { TaskRepository } from "./RDSTaskRepository";
+import { RDSTaskRepository } from "./RDSTaskRepository";
 import { RDBConnectionMock } from "../../../__tests__/interfaces/databases/RDBConnectionMock";
 import moment from "moment-timezone";
 
@@ -13,7 +13,7 @@ describe("RDSTaskRepository", () => {
   };
   test("convertModel", () => {
     const connection = new RDBConnectionMock();
-    const target = new TaskRepository(connection);
+    const target = new RDSTaskRepository(connection);
 
     const res = target["convertModel"](dummyRowTask);
     expect(res.id).toBe(dummyRowTask.id);
@@ -29,7 +29,7 @@ describe("RDSTaskRepository", () => {
   test("find", async () => {
     const connection = new RDBConnectionMock();
     connection.execute.mockReturnValue([dummyRowTask]);
-    const target = new TaskRepository(connection);
+    const target = new RDSTaskRepository(connection);
 
     const result = await target.find(dummyRowTask.id);
     expect(connection.execute).toBeCalled();

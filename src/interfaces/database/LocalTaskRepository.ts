@@ -1,7 +1,7 @@
 import { Task } from "../../domain/models/Tasks";
 import { ITaskRepository } from "../../application/repositories/ITaskRepository";
-
-import moment from "moment-timezone";
+import { injectable } from "inversify";
+import "reflect-metadata";
 
 let taskList: Task[] = [
   new Task("task1", "taskDesc1"),
@@ -11,7 +11,8 @@ let taskList: Task[] = [
   new Task("task5", "taskDesc5"),
 ];
 
-export class LocalMockRepository extends ITaskRepository {
+@injectable()
+export class LocalTaskRepository extends ITaskRepository {
   constructor() {
     super();
   }

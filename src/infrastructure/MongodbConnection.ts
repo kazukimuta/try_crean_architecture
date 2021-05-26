@@ -1,7 +1,10 @@
 import { MongoClient, ObjectID } from "mongodb";
 import dotenv from "dotenv";
 import { INoSQLDBConnection } from "../interfaces/database/INoSQLDBConnection";
+import { injectable } from "inversify";
+import "reflect-metadata";
 
+@injectable()
 export class MongodbConnection extends INoSQLDBConnection {
   private MONGO_URL: string;
   private MONGO_DB: string;

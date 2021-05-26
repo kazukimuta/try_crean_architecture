@@ -1,3 +1,7 @@
+import { injectable } from "inversify";
+import "reflect-metadata";
+
+@injectable()
 export abstract class INoSQLDBConnection {
   abstract insert(params: any): Promise<any>;
   abstract update(key: any, params: any): Promise<any>;

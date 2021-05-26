@@ -1,5 +1,8 @@
 import { Task } from "../../domain/models/Tasks";
+import { injectable } from "inversify";
+import "reflect-metadata";
 
+@injectable()
 export abstract class ITaskRepository {
   abstract findAll(): Promise<Array<Task>>;
   abstract find(id: string): Promise<Task>;

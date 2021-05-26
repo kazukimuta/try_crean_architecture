@@ -2,10 +2,14 @@ import { Task } from "../../domain/models/Tasks";
 import { ITaskRepository } from "../../application/repositories/ITaskRepository";
 import { IRDBConnection } from "./IRDBConnection";
 import moment from "moment-timezone";
+import { inject, injectable } from "inversify";
+import Symbols from "../../symbols";
+import "reflect-metadata";
 
-export class TaskRepository extends ITaskRepository {
-  private connection: any;
-  constructor(connection: IRDBConnection) {
+@injectable()
+export class RDSTaskRepository extends ITaskRepository {
+  private connection: IRDBConnection;
+  constructor(@inject(Symbols.IRDBConnection) connection: IRDBConnection) {
     super();
     this.connection = connection;
   }
