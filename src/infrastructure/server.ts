@@ -7,6 +7,7 @@ import { MysqlConnection } from "./MysqlConnection";
 import { TaskRepository } from "../interfaces/database/RDSTaskRepository";
 import { NoSQLTaskRepository } from "../interfaces/database/NoSQLTaskRepository";
 import { MongodbConnection } from "./MongodbConnection";
+import { LocalMockRepository } from "../interfaces/database/LocalTaskRepository";
 import { ITaskRepository } from "../application/repositories/ITaskRepository";
 
 function getTaskRepository(): ITaskRepository {
@@ -18,6 +19,9 @@ function getTaskRepository(): ITaskRepository {
         console.log("ok");
       });
       return new NoSQLTaskRepository(mongodbConnection);
+
+    case "local":
+      return new LocalMockRepository();
 
     case "mysql":
     default:
